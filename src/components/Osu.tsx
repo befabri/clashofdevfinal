@@ -3,7 +3,7 @@ import { useSignal } from "@preact/signals";
 import failSvg from "../icons/x.svg";
 import { hitZoneStatus } from "../signals/HitZoneStatus";
 import { animationsComplete } from "../signals/AnimationStatus";
-import { Direction } from "../types/types";
+import { Direction, Status } from "../types/types";
 import Arrow from "./ui/Arrow";
 
 const getRandomDirection = () => {
@@ -11,18 +11,24 @@ const getRandomDirection = () => {
     return directions[Math.floor(Math.random() * directions.length)];
 };
 
-const LENGTH = 100;
-const SPEED = 200;
+const LENGTH = 10;
+const SPEED = 250;
 const rectNumbers = Array.from({ length: LENGTH }, () => getRandomDirection());
 
+type Rect = {
+    direction: Direction;
+    class: string;
+    status: Status;
+};
+
 export default function Osu() {
-    const rects = useSignal(
+    const rects = useSignal<Rect[]>(
         Array(LENGTH)
             .fill(null)
             .map((_, index) => ({
                 direction: rectNumbers[index],
-                isKeyPressed: false,
                 class: "bg-cod_white",
+                status: "Idle",
             }))
     );
     const exitCount = useSignal(0);
@@ -75,13 +81,13 @@ export default function Osu() {
 
                         if (isColliding && !currentlyInHitZone.current.has(index)) {
                             currentlyInHitZone.current.add(index);
-                            hitZoneStatus.value = "idle";
+                            hitZoneStatus.value = "Idle";
                         } else if (!isColliding && currentlyInHitZone.current.has(index)) {
                             currentlyInHitZone.current.delete(index);
 
-                            if (!rects.value[index].isKeyPressed) {
+                            if (rects.value[index].status === "Idle") {
                                 rects.value[index].class = "bg-orange_light";
-                                hitZoneStatus.value = "afk";
+                                hitZoneStatus.value = "Afk";
                             }
 
                             exitCount.value++;
@@ -118,7 +124,7 @@ export default function Osu() {
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
-            const keyDirectionMap: Record<string, string> = {
+            const keyDirectionMap: Record<string, Direction> = {
                 ArrowUp: "Up",
                 z: "Up",
                 ArrowLeft: "Left",
@@ -131,20 +137,26 @@ export default function Osu() {
 
             const pressedDirection = keyDirectionMap[event.key];
 
-            if (pressedDirection) {
-                currentlyInHitZone.current.forEach((index) => {
-                    const rect = rects.value[index];
+            if (pressedDirection && currentlyInHitZone.current.size > 0) {
+                const firstIdleIndex = [...currentlyInHitZone.current].find(
+                    (index) => rects.value[index].status === "Idle"
+                );
+
+                if (firstIdleIndex !== undefined) {
+                    const rect = rects.value[firstIdleIndex];
+
                     if (rect.direction === pressedDirection) {
                         rect.class = "bg-green_light";
-                        rect.isKeyPressed = true;
-                        hitZoneStatus.value = "success";
+                        hitZoneStatus.value = "Success";
+                        rect.status = "Success";
                     } else {
                         rect.class = "bg-orange_light";
-                        rect.isKeyPressed = true;
-                        hitZoneStatus.value = "fail";
+                        hitZoneStatus.value = "Fail";
+                        rect.status = "Fail";
                     }
+
                     rects.value = [...rects.value];
-                });
+                }
             }
         };
 
@@ -166,9 +178,8 @@ export default function Osu() {
                         style={{
                             opacity: getOpacityForRect(index),
                         }}>
-                        <Arrow direction={rect.direction} />
-
-                        {hitZoneStatus.value === "success" && rect.isKeyPressed && (
+                        <Arrow direction={rect.direction} color={rect.status || "Idle"} />
+                        {rect.status === "Success" && (
                             <svg
                                 class={`animate-fade-out absolute top-0 h-[150px] w-[145px] translate-x-[-2px] translate-y-[-30px] transition-opacity`}
                                 viewBox="0 0 145 150"
@@ -192,21 +203,21 @@ export default function Osu() {
                 class="absolute left-[119px] top-0 size-[106px] rounded-[10px] shadow-illuminated">
                 <div
                     class={`flex h-full w-full items-center justify-center rounded-[10px] shadow-custom-inner ${
-                        hitZoneStatus.value === "success"
+                        hitZoneStatus.value === "Success"
                             ? "bg-green_light bg-opacity-30"
                             : "bg-beige bg-opacity-30"
                     }`}>
-                    {hitZoneStatus.value === "fail" ||
-                        (hitZoneStatus.value === "afk" && <img src={failSvg} class="size-[21px]" />)}
-                    {hitZoneStatus.value != "success" && (
+                    {hitZoneStatus.value === "Fail" && <img src={failSvg} class="size-[21px]" />}
+                    {hitZoneStatus.value === "Afk" && <img src={failSvg} class="size-[21px]" />}
+                    {hitZoneStatus.value != "Success" && (
                         <svg
                             class="absolute inset-0 h-full w-full stroke-beige"
                             style={{
                                 stroke: {
-                                    idle: "#F3F3F1",
-                                    fail: "#FFBCAB",
-                                    afk: "#FFBCAB",
-                                    success: "#F3F3F1",
+                                    Idle: "#F3F3F1",
+                                    Fail: "#FFBCAB",
+                                    Afk: "#FFBCAB",
+                                    Success: "#F3F3F1",
                                 }[hitZoneStatus.value],
                             }}
                             viewBox="0 0 106 106"

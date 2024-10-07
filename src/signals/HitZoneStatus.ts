@@ -1,14 +1,15 @@
 import { signal } from "@preact/signals";
+import { HitZoneStatus } from "../types/types";
 
-export const hitZoneStatus = signal<"idle" | "success" | "fail" | "afk">("idle");
+export const hitZoneStatus = signal<HitZoneStatus>("Idle");
 
 export const successCount = signal(0);
 export const failCount = signal(0);
 
 hitZoneStatus.subscribe((newValue) => {
-    if (newValue === "success") {
+    if (newValue === "Success") {
         successCount.value += 1;
-    } else if (newValue === "fail" || newValue === "afk") {
+    } else if (newValue === "Fail" || newValue === "Afk") {
         failCount.value += 1;
     }
 });
