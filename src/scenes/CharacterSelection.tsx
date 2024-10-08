@@ -13,6 +13,8 @@ import baliseShield from "../icons/balise_shield.svg";
 import CollaboratorCursor from "../components/ui/CollaboratorCursor";
 import Button from "../components/ui/Button";
 import { message } from "../signals/Message";
+import { selectedCharacter } from "../signals/CharacterSelection";
+import { Character, Scene } from "../types/types";
 
 const images = {
     designImage: designImage,
@@ -26,19 +28,24 @@ const Icons = {
     baliseLarge: baliseLarge,
 };
 
-export default function CharacterSelection({ onCharacterSelected }) {
+interface Props {
+    onSceneComplete: (nextScene: Scene) => void;
+}
+
+export default function CharacterSelection({ onSceneComplete }: Props) {
     message.value = "PICK A CHAMPION !";
 
-    const [selectedCard, setSelectedCard] = useState<1 | 2 | 3>(2);
+    const [selectedCard, setSelectedCard] = useState<Character>(2);
 
     const handleSectionClick = (cardId: number) => {
         if (cardId >= 1 && cardId <= 3) {
-            setSelectedCard(cardId as 1 | 2 | 3);
+            setSelectedCard(cardId as Character);
         }
     };
 
     const submit = () => {
-        onCharacterSelected(selectedCard);
+        selectedCharacter.value = selectedCard;
+        onSceneComplete("Duel");
     };
 
     return (
@@ -70,7 +77,7 @@ export default function CharacterSelection({ onCharacterSelected }) {
                             <div class="flex h-full w-full flex-col gap-6">
                                 <div class="relative flex-shrink">
                                     <img
-                                        src={images[card.image.src]}
+                                        src={images[card.image.src as keyof typeof images]}
                                         alt={card.image.alt}
                                         width={272}
                                         height={190}

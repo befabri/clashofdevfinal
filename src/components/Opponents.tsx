@@ -1,7 +1,7 @@
 import design from "../assets/design.png?w=416&h=400&format=webp&hasAlpha=true&imagetools";
 import king from "../assets/king.png?w=416&h=401&format=webp&hasAlpha=true&imagetools";
 import code from "../assets/code.png?w=416&h=400&format=webp&hasAlpha=true&imagetools";
-import { selectedCharacter } from "../pages/Play";
+import { selectedCharacter } from "../signals/CharacterSelection";
 
 export default function Opponents() {
     return (

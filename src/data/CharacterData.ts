@@ -8,7 +8,7 @@ type CharacterCard = {
         alt: string;
     };
     bgColor: string;
-    icon: string;
+    icon: "asteriskLarge" | "cursorLarge" | "baliseLarge";
     content: string;
     cursors: {
         title: string;

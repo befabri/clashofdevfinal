@@ -1,19 +1,11 @@
 import { useRef, useEffect } from "preact/hooks";
 import { useSignal } from "@preact/signals";
 import failSvg from "../icons/x.svg";
-import { hitZoneStatus } from "../signals/HitZoneStatus";
-import { animationsComplete } from "../signals/AnimationStatus";
+import { failCount, hitZoneStatus, successCount } from "../signals/HitZoneStatus";
 import { Direction, Status } from "../types/types";
 import Arrow from "./ui/Arrow";
-
-const getRandomDirection = () => {
-    const directions: Direction[] = ["Up", "Down", "Left", "Right"];
-    return directions[Math.floor(Math.random() * directions.length)];
-};
-
-const LENGTH = 10;
-const SPEED = 250;
-const rectNumbers = Array.from({ length: LENGTH }, () => getRandomDirection());
+import { animationState } from "../signals/Message";
+import { RECT_COUNT, SPEED } from "../constants/constants";
 
 type Rect = {
     direction: Direction;
@@ -21,12 +13,19 @@ type Rect = {
     status: Status;
 };
 
+const getRandomDirection = () => {
+    const directions: Direction[] = ["Up", "Down", "Left", "Right"];
+    return directions[Math.floor(Math.random() * directions.length)];
+};
+
+const randomDirections = Array.from({ length: RECT_COUNT }, () => getRandomDirection());
+
 export default function Osu() {
     const rects = useSignal<Rect[]>(
-        Array(LENGTH)
+        Array(RECT_COUNT)
             .fill(null)
             .map((_, index) => ({
-                direction: rectNumbers[index],
+                direction: randomDirections[index],
                 class: "bg-cod_white",
                 status: "Idle",
             }))
@@ -49,11 +48,12 @@ export default function Osu() {
         return 0.2;
     };
 
+    // TODO
     useEffect(() => {
-        if (animationsComplete.value) {
+        if (animationState.value === "Complete") {
             startMovement();
         }
-    }, [animationsComplete.value]);
+    }, [animationState.value]);
 
     useEffect(() => {
         let animationFrameId: number;
@@ -84,15 +84,15 @@ export default function Osu() {
                             hitZoneStatus.value = "Idle";
                         } else if (!isColliding && currentlyInHitZone.current.has(index)) {
                             currentlyInHitZone.current.delete(index);
-
                             if (rects.value[index].status === "Idle") {
                                 rects.value[index].class = "bg-orange_light";
                                 hitZoneStatus.value = "Afk";
+                                failCount.value += 1;
                             }
 
                             exitCount.value++;
 
-                            if (currentlyInHitZone.current.size === 0) {
+                            if (exitCount.value >= RECT_COUNT) {
                                 stopMovement();
                             }
                         }
@@ -119,6 +119,7 @@ export default function Osu() {
     };
 
     const stopMovement = () => {
+        hitZoneStatus.value = "Idle";
         gameState.value = "idle";
     };
 
@@ -149,10 +150,12 @@ export default function Osu() {
                         rect.class = "bg-green_light";
                         hitZoneStatus.value = "Success";
                         rect.status = "Success";
+                        successCount.value += 1;
                     } else {
                         rect.class = "bg-orange_light";
                         hitZoneStatus.value = "Fail";
                         rect.status = "Fail";
+                        failCount.value += 1;
                     }
 
                     rects.value = [...rects.value];
@@ -181,7 +184,7 @@ export default function Osu() {
                         <Arrow direction={rect.direction} color={rect.status || "Idle"} />
                         {rect.status === "Success" && (
                             <svg
-                                class={`animate-fade-out absolute top-0 h-[150px] w-[145px] translate-x-[-2px] translate-y-[-30px] transition-opacity`}
+                                class={`absolute top-0 h-[150px] w-[145px] translate-x-[-2px] translate-y-[-30px] animate-fade-out transition-opacity`}
                                 viewBox="0 0 145 150"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg">

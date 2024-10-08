@@ -1,9 +1,9 @@
 import swordImage from "../assets/sword.png?w=80&h=80&format=webp&imagetools";
+import { MAX_SCORE } from "../constants/constants";
 import { failCount, successCount } from "../signals/HitZoneStatus";
 import ScoreCircle from "./ui/ScoreCircle";
 
 export default function Score() {
-    const MAX_SCORE = 5;
     const successOverflow = Math.max(0, successCount.value - MAX_SCORE);
     const failOverflow = Math.max(0, failCount.value - MAX_SCORE);
 

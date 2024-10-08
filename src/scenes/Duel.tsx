@@ -2,16 +2,29 @@ import Osu from "../components/Osu";
 import Score from "../components/Score";
 import design from "../assets/cards/1.png?w=1440&h=1024&format=webp&imagetools";
 import code from "../assets/cards/2.png?w=1440&h=1024&format=webp&imagetools";
-import { selectedCharacter } from "../pages/Play";
 import Opponents from "../components/Opponents";
 import { animationState, message } from "../signals/Message";
-import { useEffect } from "preact/hooks";
+import { selectedCharacter } from "../signals/CharacterSelection";
+import { successCount, failCount } from "../signals/HitZoneStatus";
+import { effect } from "@preact/signals";
+import { Scene } from "../types/types";
+import { MAX_SCORE, RECT_COUNT } from "../constants/constants";
 
-export default function Duel() {
-    useEffect(() => {
-        message.value = "Get Ready!";
-        animationState.value = "vsAppeared";
-    }, []);
+interface Props {
+    onSceneComplete: (nextScene: Scene) => void;
+}
+
+export default function Duel({ onSceneComplete }: Props) {
+    message.value = "Get Ready!";
+    animationState.value = "VsAppeared";
+
+    effect(() => {
+        if (successCount.value > MAX_SCORE) {
+            onSceneComplete("Result");
+        } else if (failCount.value > MAX_SCORE || successCount.value + failCount.value >= RECT_COUNT) {
+            onSceneComplete("Loose");
+        }
+    });
 
     return (
         <div class="relative flex h-screen w-full flex-col justify-center overflow-hidden">

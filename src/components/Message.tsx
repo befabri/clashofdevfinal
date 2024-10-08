@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "preact/hooks";
 import { useSignal } from "@preact/signals";
 import { animationDisplay, animationState, message } from "../signals/Message";
-import { animationsComplete } from "../signals/AnimationStatus";
 
 export default function Message() {
     const messageRef = useRef<HTMLSpanElement>(null);
@@ -22,26 +21,26 @@ export default function Message() {
             animationDisplay.value = false;
             await new Promise((resolve) => setTimeout(resolve, 100));
         }
-        animationState.value = "fight";
+        animationState.value = "Fight";
     }
 
     function handleVsAppearedAnimationEnd() {
         animationDisplay.value = false;
-        animationState.value = "countdown";
+        animationState.value = "Countdown";
     }
 
     function handleFightAnimationEnd() {
         animationDisplay.value = false;
-        animationsComplete.value = true;
+        animationState.value = "Complete";
     }
 
     useEffect(() => {
         const unsubscribe = animationState.subscribe((newValue) => {
-            if (newValue === "vsAppeared") {
+            if (newValue === "VsAppeared") {
                 animationDisplay.value = false;
-            } else if (newValue === "countdown") {
+            } else if (newValue === "Countdown") {
                 startCountdown();
-            } else if (newValue === "fight") {
+            } else if (newValue === "Fight") {
                 message.value = "Fight !";
                 animationDisplay.value = true;
             }
@@ -52,7 +51,7 @@ export default function Message() {
     }, []);
 
     useEffect(() => {
-        if (animationDisplay.value && animationState.value === "countdown") {
+        if (animationDisplay.value && animationState.value === "Countdown") {
             requestAnimationFrame(() => {
                 if (messageRef.current && animatedRef.current) {
                     const rect = messageRef.current.getBoundingClientRect();
@@ -65,7 +64,7 @@ export default function Message() {
 
     return (
         <>
-            {animationDisplay.value && animationState.value === "countdown" && (
+            {animationDisplay.value && animationState.value === "Countdown" && (
                 <div
                     key={animationKey.value}
                     ref={animatedRef}
@@ -74,7 +73,7 @@ export default function Message() {
                 </div>
             )}
 
-            {animationDisplay.value && animationState.value === "fight" && (
+            {animationDisplay.value && animationState.value === "Fight" && (
                 <div
                     ref={animatedRef}
                     onAnimationEnd={handleFightAnimationEnd}
@@ -83,7 +82,7 @@ export default function Message() {
                 </div>
             )}
 
-            {!animationDisplay.value && animationState.value === "vsAppeared" && (
+            {!animationDisplay.value && animationState.value === "VsAppeared" && (
                 <div
                     ref={animatedRef}
                     onAnimationEnd={handleVsAppearedAnimationEnd}

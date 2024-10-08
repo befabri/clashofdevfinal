@@ -1,41 +1,23 @@
-import { signal } from "@preact/signals";
 import Win from "../scenes/Win";
 import { useState } from "preact/hooks";
 import CharacterSelection from "../scenes/CharacterSelection";
-import { message } from "../signals/Message";
 import Duel from "../scenes/Duel";
-
-export const selectedCharacter = signal(null);
-const gameResult = signal(null);
+import Loose from "../scenes/Loose";
+import { Scene } from "../types/types";
 
 export function Play() {
-    const [currentScene, setCurrentScene] = useState("characterSelection");
+    const [currentScene, setCurrentScene] = useState<Scene>("CharacterSelection");
 
-    const handleCharacterSelection = (character) => {
-        selectedCharacter.value = character;
-        message.value = "PARTY";
-        setCurrentScene("partySelection");
-    };
-
-    const handlePartySelection = (party) => {
-        message.value = "YOU ARE READY TO FIGHT!";
-        setCurrentScene("result");
-    };
-
-    const handleRestart = () => {
-        message.value = "PICK A CHAMPION!";
-        selectedCharacter.value = null;
-        gameResult.value = null;
-        setCurrentScene("characterSelection");
+    const handleSceneComplete = (nextScene: Scene) => {
+        setCurrentScene(nextScene);
     };
 
     return (
         <>
-            {currentScene === "characterSelection" && (
-                <CharacterSelection onCharacterSelected={handleCharacterSelection} />
-            )}
-            {currentScene === "partySelection" && <Duel />}
-            {currentScene === "result" && <Win onRestart={handleRestart} />}
+            {currentScene === "CharacterSelection" && <CharacterSelection onSceneComplete={handleSceneComplete} />}
+            {currentScene === "Duel" && <Duel onSceneComplete={handleSceneComplete} />}
+            {currentScene === "Result" && <Win onSceneComplete={handleSceneComplete} />}
+            {currentScene === "Loose" && <Loose onSceneComplete={handleSceneComplete} />}
         </>
     );
 }

@@ -1,8 +1,6 @@
 import { signal } from "@preact/signals";
+import { AnimationState } from "../types/types";
 
 export const message = signal("CLASH TIME!");
-
-export type AnimationStateType = "idle" | "vsAppeared" | "countdown" | "fight" | "complete";
-export const animationState = signal<AnimationStateType>("idle");
-
+export const animationState = signal<AnimationState>("Idle");
 export const animationDisplay = signal(false);
