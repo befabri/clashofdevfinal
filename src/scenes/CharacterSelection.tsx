@@ -49,8 +49,8 @@ export default function CharacterSelection({ onSceneComplete }: Props) {
     };
 
     return (
-        <>
-            <div class="flex min-h-screen flex-col items-center justify-between px-[155px] pt-[214px]">
+        <div class="relative h-full max-w-screen-2xl">
+            <div class="flex min-h-screen max-w-screen-2xl flex-col items-center justify-between px-[155px] pt-[214px]">
                 <section class="auto-col-fr grid cursor-pointer grid-cols-3 gap-4 md:auto-cols-auto">
                     {CharacterCardsData.map((card) => (
                         <article
@@ -130,6 +130,6 @@ export default function CharacterSelection({ onSceneComplete }: Props) {
                     isTextColored={false}
                 />
             </div>
-        </>
+        </div>
     );
 }

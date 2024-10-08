@@ -11,7 +11,7 @@ export function App() {
     return (
         <LocationProvider>
             <Header />
-            <main class="relative mx-auto flex h-full w-full max-w-screen-2xl flex-col items-center justify-center">
+            <main class="relative mx-auto flex h-full w-full max-w-screen-custom flex-col items-center justify-center">
                 <Router>
                     <Route path="/" component={Home} />
                     <Route path="/play" component={Play} />

@@ -18,8 +18,8 @@ export default function Win({ onSceneComplete }: Props) {
     };
 
     return (
-        <>
-            <div class="flex min-h-screen flex-col items-center justify-between px-[207px] pt-[80px]">
+        <div class="relative h-full max-w-screen-2xl">
+            <div class="flex min-h-screen max-w-screen-2xl flex-col items-center justify-between px-[207px] pt-[80px]">
                 <div class="flex flex-grow flex-col items-center justify-center">
                     <WinnerCard />
                 </div>
@@ -40,6 +40,6 @@ export default function Win({ onSceneComplete }: Props) {
             <div class="absolute right-[113px] top-[286px] rotate-[-6.64deg]">
                 <CollaboratorCursor title="@LLCoolChris" side="left" style="blue" isTextColored={false} />
             </div>
-        </>
+        </div>
     );
 }

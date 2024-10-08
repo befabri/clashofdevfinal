@@ -29,7 +29,7 @@ export default function Duel({ onSceneComplete }: Props) {
     return (
         <div class="relative flex h-screen w-full flex-col justify-center overflow-hidden">
             <div
-                class="absolute inset-0 bg-cover bg-center opacity-20"
+                class="absolute inset-0 bg-contain bg-center opacity-20"
                 style={{ backgroundImage: `url(${selectedCharacter.value === 2 ? design : code})` }}></div>
             <div class="relative z-10 flex h-full flex-col gap-[30px]">
                 <div class="mx-auto flex flex-row items-center justify-center pt-[136px]">

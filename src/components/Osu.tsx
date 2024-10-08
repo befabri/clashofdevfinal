@@ -171,7 +171,7 @@ export default function Osu() {
     }, []);
 
     return (
-        <div class="relative mx-auto flex w-full max-w-screen-2xl flex-row items-center">
+        <div class="relative mx-auto flex w-full max-w-screen-custom flex-row items-center">
             <div ref={parentRef} class="ml-[265px] flex flex-row gap-[40px] overflow-visible">
                 {rects.value.map((rect, index) => (
                     <div
