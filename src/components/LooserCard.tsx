@@ -31,7 +31,11 @@ export function LooserCard() {
                                 height={416}
                                 class="h-auto w-full rotate-[33.27deg] object-contain"
                             />
-                            <img src={crySvg} class="absolute bottom-[232px] right-[166px] h-[62px] w-[58px]" />
+                            <img
+                                src={crySvg}
+                                alt="crySvg"
+                                class="absolute bottom-[232px] right-[166px] h-[62px] w-[58px]"
+                            />
                         </>
                     )}
                     {selectedCharacter.value === 3 && (
@@ -43,7 +47,11 @@ export function LooserCard() {
                                 height={416}
                                 class="h-auto w-full rotate-[33.27deg] object-contain"
                             />
-                            <img src={crySvg} class="absolute bottom-[269px] right-[167px] h-[62px] w-[33px]" />
+                            <img
+                                src={crySvg}
+                                alt="crySvg"
+                                class="absolute bottom-[269px] right-[167px] h-[62px] w-[33px]"
+                            />
                         </>
                     )}
                 </div>
@@ -57,7 +65,11 @@ export function LooserCard() {
                     class="h-auto w-full object-contain"
                 />
             </div>
-            <img src={clashOfDevSvg} class="absolute right-[40px] top-[20px] h-[73px] w-[70px]" />
+            <img
+                src={clashOfDevSvg}
+                alt="clashOfDevSvg"
+                class="absolute right-[40px] top-[20px] h-[73px] w-[70px]"
+            />
         </article>
     );
 }

@@ -215,8 +215,8 @@ export default function Osu() {
                             ? "bg-green_light bg-opacity-30"
                             : "bg-beige bg-opacity-30"
                     }`}>
-                    {hitZoneStatus.value === "Fail" && <img src={failSvg} class="size-[21px]" />}
-                    {hitZoneStatus.value === "Afk" && <img src={failSvg} class="size-[21px]" />}
+                    {hitZoneStatus.value === "Fail" && <img src={failSvg} alt="failSvg" class="size-[21px]" />}
+                    {hitZoneStatus.value === "Afk" && <img src={failSvg} alt="failSvg" class="size-[21px]" />}
                     {hitZoneStatus.value != "Success" && (
                         <svg
                             class="absolute inset-0 h-full w-full stroke-beige"

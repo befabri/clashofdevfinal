@@ -1,5 +1,5 @@
 import { LandingCard } from "../components/LandingCard";
-import lightning from "../icons/lightning.svg";
+import lightningSvg from "../icons/lightning.svg";
 import LinkButton from "../components/ui/LinkButton";
 import CollaboratorCursor from "../components/ui/CollaboratorCursor";
 import { animationState, message } from "../signals/Message";
@@ -22,11 +22,13 @@ export function Home() {
                 </section>
             </div>
             <img
-                src={lightning}
+                src={lightningSvg}
+                alt="lightningSvg"
                 class="absolute right-[112px] top-[80px] size-[38px] md:right-[172px] md:top-[121px]"
             />
             <img
                 src={baliseShieldSvg}
+                alt="baliseShieldSvg"
                 class="absolute left-[50px] top-[90px] h-[64px] w-[82px] md:left-[175px] md:top-[190px] md:h-[80px] md:w-[103px]"
             />
             <div class="absolute bottom-[136px] right-[137px] rotate-[-15.79deg] md:bottom-[56px] md:right-[137px]">

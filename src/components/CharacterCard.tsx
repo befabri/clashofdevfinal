@@ -60,7 +60,11 @@ export default function CharacterCard({ card, selectedCard, images, Icons, handl
                     dangerouslySetInnerHTML={{ __html: card.content }}
                 />
             </div>
-            <img src={Icons[card.icon]} class="absolute bottom-[-39.7px] right-[-3.7px] size-[135px]" />
+            <img
+                src={Icons[card.icon]}
+                alt={card.icon}
+                class="absolute bottom-[-39.7px] right-[-3.7px] size-[135px]"
+            />
         </article>
     );
 }

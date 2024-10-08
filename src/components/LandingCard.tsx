@@ -26,14 +26,19 @@ export function LandingCard() {
             </div>
             <img
                 src={clashOfDevSvg}
+                alt="clashOfDevSvg"
                 class="absolute right-[20px] top-[10px] h-[73px] w-[70px] md:right-[40px] md:top-[20px]"
             />
-            <img src={asteriskSvg} class="absolute left-[416px] top-[246px] hidden size-[30px] md:flex" />
+            <img
+                src={asteriskSvg}
+                alt="asteriskSvg"
+                class="absolute left-[416px] top-[246px] hidden size-[30px] md:flex"
+            />
             <div class="key:top-[173px] absolute left-[322px] top-[100px] hidden size-[68px] rotate-[-23.3deg] items-center justify-center rounded-[10px] bg-cod_white shadow-custom-inner sm:flex md:left-[482px] md:top-[100px] md:size-[85px] xl:size-[106px]">
-                <img src={arrowRightSvg} class="size-[24px] md:size-[30px] xl:size-[38px]" />
+                <img src={arrowRightSvg} alt="arrowRightSvg" class="size-[24px] md:size-[30px] xl:size-[38px]" />
             </div>
             <div class="key:top-[98px] absolute left-[347px] top-[60px] hidden size-[68px] rotate-[10.04deg] items-center justify-center rounded-[10px] bg-cod_white shadow-custom-inner sm:flex md:left-[547px] md:top-[60px] md:size-[85px] xl:size-[106px]">
-                <img src={arrowRightSvg} class="size-[24px] md:size-[30px] xl:size-[38px]" />
+                <img src={arrowRightSvg} alt="arrowRightSvg" class="size-[24px] md:size-[30px] xl:size-[38px]" />
             </div>
         </article>
     );

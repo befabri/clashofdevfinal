@@ -16,9 +16,13 @@ export function Mobile() {
                         Go back!
                     </LinkButton>
                 </div>
-                <img src={clashOfDevSvg} class="absolute right-[11px] top-[28px] h-[73px] w-[70px]" />
+                <img
+                    src={clashOfDevSvg}
+                    alt="clashOfDevSvg"
+                    class="absolute right-[11px] top-[28px] h-[73px] w-[70px]"
+                />
             </article>
-            <img src={lightningSvg} class="absolute bottom-[52px] right-[58px] size-[38px]" />
+            <img src={lightningSvg} alt="lightningSvg" class="absolute bottom-[52px] right-[58px] size-[38px]" />
             <div class="absolute bottom-[44Px] left-[39px] rotate-[-15.79deg]">
                 <CollaboratorCursor title="@maislina_" side="right" style="orange" isTextColored={false} />
             </div>

@@ -28,7 +28,11 @@ export function WinnerCard() {
                         height={416}
                         class="h-auto w-full rotate-[33.27deg] object-contain"
                     />
-                    <img src={crySvg} class="absolute bottom-[232px] right-[165px] h-[62px] w-[58px]" />
+                    <img
+                        src={crySvg}
+                        alt="crySvg"
+                        class="absolute bottom-[232px] right-[165px] h-[62px] w-[58px]"
+                    />
                 </div>
             </div>
             <div class="absolute bottom-[-15px] right-[121px]">
@@ -51,7 +55,11 @@ export function WinnerCard() {
                     />
                 )}
             </div>
-            <img src={clashOfDevSvg} class="absolute right-[40px] top-[20px] h-[73px] w-[70px]" />
+            <img
+                src={clashOfDevSvg}
+                alt="clashOfDevSvg"
+                class="absolute right-[40px] top-[20px] h-[73px] w-[70px]"
+            />
         </article>
     );
 }

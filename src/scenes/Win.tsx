@@ -1,6 +1,6 @@
 import CollaboratorCursor from "../components/ui/CollaboratorCursor";
 import { Scene } from "../types/types";
-import lightning from "../icons/lightning.svg";
+import lightningSvg from "../icons/lightning.svg";
 import { message } from "../signals/Message";
 import Button from "../components/ui/Button";
 import { WinnerCard } from "../components/WinnerCard";
@@ -29,8 +29,12 @@ export default function Win({ onSceneComplete }: Props) {
                     </Button>
                 </section>
             </div>
-            <img src={lightning} class="absolute right-[172px] top-[121px] size-[38px]" />
-            <img src={baliseShieldSvg} class="absolute left-[175px] top-[190px] h-[80px] w-[103px]" />
+            <img src={lightningSvg} alt="lightningSvg" class="absolute right-[172px] top-[121px] size-[38px]" />
+            <img
+                src={baliseShieldSvg}
+                alt="baliseShieldSvg"
+                class="absolute left-[175px] top-[190px] h-[80px] w-[103px]"
+            />
             <div class="absolute bottom-[56px] right-[137px] rotate-[-15.79deg]">
                 <CollaboratorCursor title="@maislina_" side="right" style="orange" isTextColored={false} />
             </div>
