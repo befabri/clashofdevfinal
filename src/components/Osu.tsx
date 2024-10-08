@@ -18,9 +18,9 @@ const getRandomDirection = () => {
     return directions[Math.floor(Math.random() * directions.length)];
 };
 
-const randomDirections = Array.from({ length: RECT_COUNT }, () => getRandomDirection());
-
 export default function Osu() {
+    const randomDirections = Array.from({ length: RECT_COUNT }, () => getRandomDirection());
+
     const rects = useSignal<Rect[]>(
         Array(RECT_COUNT)
             .fill(null)
@@ -48,7 +48,6 @@ export default function Osu() {
         return 0.2;
     };
 
-    // TODO
     useEffect(() => {
         if (animationState.value === "Complete") {
             startMovement();

@@ -5,7 +5,7 @@ import code from "../assets/cards/2.png?w=1440&h=1024&format=webp&imagetools";
 import Opponents from "../components/Opponents";
 import { animationState, message } from "../signals/Message";
 import { selectedCharacter } from "../signals/CharacterSelection";
-import { successCount, failCount } from "../signals/HitZoneStatus";
+import { successCount, failCount, hitZoneStatus } from "../signals/HitZoneStatus";
 import { effect } from "@preact/signals";
 import { Scene } from "../types/types";
 import { MAX_SCORE, RECT_COUNT } from "../constants/constants";
@@ -17,6 +17,9 @@ interface Props {
 export default function Duel({ onSceneComplete }: Props) {
     message.value = "Get Ready!";
     animationState.value = "VsAppeared";
+    successCount.value = 0;
+    failCount.value = 0;
+    hitZoneStatus.value = "Idle";
 
     effect(() => {
         if (successCount.value > MAX_SCORE) {
