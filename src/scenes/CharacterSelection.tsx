@@ -38,7 +38,7 @@ export default function CharacterSelection({ onSceneComplete }: Props) {
     const [selectedCard, setSelectedCard] = useState<Character>(2);
 
     const handleSectionClick = (cardId: number) => {
-        if (cardId >= 1 && cardId <= 3) {
+        if (cardId !== 1 && cardId >= 1 && cardId <= 3) {
             setSelectedCard(cardId as Character);
         }
     };

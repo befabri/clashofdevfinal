@@ -15,12 +15,14 @@ export default function CharacterCard({ card, selectedCard, images, Icons, handl
         <article
             key={card.order}
             onClick={() => handleSectionClick(card.order)}
+            title={card.order === 1 ? "Champion not implemented" : ""}
             class={clsx(
                 "relative flex h-full transform flex-col justify-between overflow-hidden rounded-[60px] px-[47px] pb-[98px] pt-[40px] transition-opacity",
                 card.bgColor,
                 card.order == selectedCard
                     ? "opacity-100 shadow-illuminated hover:opacity-100"
-                    : "opacity-60 hover:opacity-80"
+                    : "opacity-60 hover:opacity-80",
+                card.order === 1 ? "cursor-default" : "cursor-pointer"
             )}>
             <div class="flex w-full flex-row pb-[40px]">
                 <div class="flex w-full flex-row justify-start gap-6">
