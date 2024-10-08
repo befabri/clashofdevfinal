@@ -1,6 +1,6 @@
 import kingImage from "../assets/king.png?w=416&h=401&format=webp&hasAlpha=true&imagetools";
-import designRedImage from "../assets/design-red.png?w=400&h=416&format=webp&hasAlpha=true&imagetools";
-import codeRedImage from "../assets/code-red.png?w=400&h=416&format=webp&hasAlpha=true&imagetools";
+import designRedImage from "../assets/design-red-loose.png?w=400&h=416&format=webp&hasAlpha=true&imagetools";
+import codeRedImage from "../assets/code-red-loose.png?w=400&h=416&format=webp&hasAlpha=true&imagetools";
 import crySvg from "../icons/cry.svg";
 import clashOfDevSvg from "../icons/clash_of_dev.svg";
 import { selectedCharacter } from "../signals/CharacterSelection";
@@ -25,24 +25,29 @@ export function LooserCard() {
             <div class="absolute bottom-[-191px] right-[-146px]">
                 <div class="relative h-auto w-full">
                     {selectedCharacter.value === 2 && (
-                        <img
-                            src={designRedImage}
-                            alt="A sad design player"
-                            width={400}
-                            height={416}
-                            class="h-auto w-full rotate-[33.27deg] object-contain"
-                        />
+                        <>
+                            <img
+                                src={designRedImage}
+                                alt="A sad design player"
+                                width={400}
+                                height={416}
+                                class="h-auto w-full rotate-[33.27deg] object-contain"
+                            />
+                            <img src={crySvg} class="absolute bottom-[232px] right-[166px] h-[62px] w-[58px]" />
+                        </>
                     )}
                     {selectedCharacter.value === 3 && (
-                        <img
-                            src={codeRedImage}
-                            alt="A sad code player"
-                            width={400}
-                            height={416}
-                            class="h-auto w-full rotate-[33.27deg] object-contain"
-                        />
+                        <>
+                            <img
+                                src={codeRedImage}
+                                alt="A sad code player"
+                                width={400}
+                                height={416}
+                                class="h-auto w-full rotate-[33.27deg] object-contain"
+                            />
+                            <img src={crySvg} class="absolute bottom-[269px] right-[167px] h-[62px] w-[33px]" />
+                        </>
                     )}
-                    <img src={crySvg} class="absolute bottom-[232px] right-[166px] h-[62px] w-[58px]" />
                 </div>
             </div>
             <div class="absolute bottom-0 right-[140px]">
