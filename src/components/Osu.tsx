@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "preact/hooks";
 import { useSignal } from "@preact/signals";
 import failSvg from "../icons/x.svg";
-import { failCount, hitZoneStatus, successCount } from "../signals/HitZoneStatus";
+import { failCount, gameResult, hitZoneStatus, successCount } from "../signals/HitZoneStatus";
 import { Direction, Status } from "../types/types";
 import Arrow from "./ui/Arrow";
 import { animationState } from "../signals/Message";
@@ -31,7 +31,7 @@ export default function Osu() {
             }))
     );
     const exitCount = useSignal(0);
-    const gameState = useSignal<"idle" | "moving">("idle");
+    const gameState = useSignal<"Idle" | "Moving">("Idle");
 
     const parentRef = useRef<HTMLDivElement | null>(null);
     const childRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -55,13 +55,19 @@ export default function Osu() {
     }, [animationState.value]);
 
     useEffect(() => {
+        if (gameResult.value === "Win" || gameResult.value === "Loose") {
+            stopMovement();
+        }
+    }, [gameResult.value]);
+
+    useEffect(() => {
         let animationFrameId: number;
 
         const moveLeft = (currentTime: number) => {
             const deltaTime = (currentTime - lastTime.current) / 1000;
             lastTime.current = currentTime;
 
-            if (gameState.value === "moving" && parentRef.current) {
+            if (gameState.value === "Moving" && parentRef.current) {
                 positionX.current -= SPEED * deltaTime;
                 parentRef.current.style.transform = `translateX(${positionX.current}px)`;
             }
@@ -113,13 +119,13 @@ export default function Osu() {
             parentRef.current.style.transform = `translateX(${positionX.current}px)`;
         }
 
-        gameState.value = "moving";
+        gameState.value = "Moving";
         lastTime.current = performance.now();
     };
 
     const stopMovement = () => {
         hitZoneStatus.value = "Idle";
-        gameState.value = "idle";
+        gameState.value = "Idle";
     };
 
     useEffect(() => {
