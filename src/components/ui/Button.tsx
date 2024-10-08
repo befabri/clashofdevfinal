@@ -13,13 +13,12 @@ interface Props {
 }
 
 const sizes = {
-    lg: "px-[53px] py-[22px]",
+    lg: "px-[1O] py-[18px]",
     md: "px-4 py-2.5",
 };
 
 const styles = {
-    primary:
-        "bg-beige dark:bg-smoke_dark text-cod_black dark:text-cod_white hover:bg-beige_dark dark:hover:bg-black",
+    primary: "bg-beige text-cod_black hover:bg-beige_dark",
 };
 
 export default function Button({
@@ -42,7 +41,7 @@ export default function Button({
             class={clsx(
                 sizes[size],
                 styles[style],
-                "rounded-full text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 tracking-tight text-sm font-semibold",
+                "w-[212px] rounded-full text-center text-[14px] font-semibold leading-[22px] transition",
                 className
             )}>
             {children}
