@@ -17,7 +17,7 @@ export default function CharacterCard({ card, selectedCard, images, Icons, handl
             onClick={() => handleSectionClick(card.order)}
             title={card.order === 1 ? "Champion not implemented" : ""}
             class={clsx(
-                "relative flex h-full transform flex-col justify-between overflow-hidden rounded-[60px] px-[47px] pb-[98px] pt-[40px] transition-opacity",
+                "relative flex h-full transform flex-col justify-between overflow-hidden rounded-[60px] px-[47px] pb-[95px] pt-[40px] transition-opacity",
                 card.bgColor,
                 card.order == selectedCard
                     ? "opacity-100 shadow-illuminated hover:opacity-100"

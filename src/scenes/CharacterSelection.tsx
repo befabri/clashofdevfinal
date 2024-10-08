@@ -50,7 +50,7 @@ export default function CharacterSelection({ onSceneComplete }: Props) {
 
     return (
         <div class="relative h-full max-w-screen-2xl">
-            <div class="flex min-h-screen max-w-screen-2xl flex-col items-center justify-between px-[155px] pt-[214px]">
+            <div class="h-lg:pt-[214px] flex min-h-screen max-w-screen-2xl flex-col items-center justify-between px-[155px] pt-[180px]">
                 <section class="auto-col-fr grid cursor-pointer grid-cols-3 gap-4 md:auto-cols-auto">
                     {characterData.map((card) => (
                         <CharacterCard
@@ -70,15 +70,15 @@ export default function CharacterSelection({ onSceneComplete }: Props) {
                 </section>
             </div>
             <img src={lightning} class="absolute right-[153px] top-[89px] size-[38px]" />
-            <img src={asterisk} class="absolute left-[111px] top-[859px] size-[30px]" />
-            <img src={baliseShield} class="absolute left-[126px] top-[108px] h-[80px] w-[103px]" />
-            <div class="absolute right-[110px] top-[900px] rotate-[-15.79deg]">
+            <img src={asterisk} class="h-lg:top-[859px] absolute left-[111px] top-[810px] size-[30px]" />
+            <img src={baliseShield} class="h-lg:top-[108px] absolute left-[126px] top-[90px] h-[80px] w-[103px]" />
+            <div class="h-lg:top-[900px] absolute right-[110px] top-[850px] rotate-[-15.79deg]">
                 <CollaboratorCursor title="@maislina_" side="right" style="orange" isTextColored={false} />
             </div>
-            <div class="absolute left-[258px] top-[876px] rotate-[-10.41deg]">
+            <div class="h-lg:top-[876px] absolute left-[258px] top-[830px] rotate-[-10.41deg]">
                 <CollaboratorCursor title="@sometimecrea" side="right" style="pink" isTextColored={false} />
             </div>
-            <div class="absolute left-[876px] top-[128px] rotate-[-1.37deg]">
+            <div class="h-lg:top-[128px] absolute left-[876px] top-[90px] rotate-[-1.37deg]">
                 <CollaboratorCursor
                     title="@LLCoolChris"
                     side="left"

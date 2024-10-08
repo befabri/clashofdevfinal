@@ -12,6 +12,10 @@ export default {
                 lg: "1090px",
                 custom: "1920px",
                 "2xl": "1440px",
+                "h-sm": { raw: "(min-height: 640px)" },
+                "h-md": { raw: "(min-height: 768px)" },
+                "h-lg": { raw: "(min-height: 1024px)" },
+                "h-xl": { raw: "(min-height: 1280px)" },
             },
             colors: {
                 beige: "#F3F3F1",
