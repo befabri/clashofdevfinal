@@ -15,12 +15,11 @@ export default function Arrow({ direction, color }: Props) {
 
     return (
         <svg
-            width="42"
-            height="19"
             viewBox="0 0 42 19"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            class="stroke-beige"
+            class="h-[19px] w-[42px] stroke-beige"
+            shape-rendering="geometricPrecision"
             style={{
                 transform: rotationStyles[direction],
                 stroke: {
@@ -32,6 +31,7 @@ export default function Arrow({ direction, color }: Props) {
             <g filter="url(#filter0_i_1421_237)">
                 <path
                     d="M9.6 2L2 9.5M2 9.5L9.6 17M2 9.5L40 9.5"
+                    shape-rendering="geometricPrecision"
                     stroke="stroke-beige"
                     stroke-width="3.8"
                     stroke-linecap="round"

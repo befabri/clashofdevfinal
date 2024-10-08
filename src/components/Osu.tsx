@@ -176,7 +176,7 @@ export default function Osu() {
                     <div
                         key={index}
                         ref={(el) => (childRefs.current[index] = el)}
-                        class={`flex size-[106px] flex-shrink-0 items-center justify-center rounded-[10px] text-center transition-opacity duration-300 ${rect.class}`}
+                        class={`flex size-[106px] items-center justify-center rounded-[10px] transition-opacity duration-300 ${rect.class}`}
                         style={{
                             opacity: getOpacityForRect(index),
                         }}>

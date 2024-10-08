@@ -58,9 +58,10 @@ export default function CollaboratorCursor({ title, side, style, isTextColored =
                     flip ? "translate-x-[-3px] translate-y-[5px] rotate-[-30.43deg]" : ""
                 )}>
                 <svg
-                    viewBox="0 0 12 13"
+                    viewBox="0 0 13 14"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
+                    shape-rendering="geometricPrecision"
                     class={clsx("size-[10px]", cursorStyles[style], side === "left" ? "" : "scale-x-[-1]")}>
                     <defs>
                         <filter id="dropShadow" x="-50%" y="-50%" width="200%" height="200%">
@@ -76,7 +77,8 @@ export default function CollaboratorCursor({ title, side, style, isTextColored =
                         d="M2.82601 11.4738L1.08747 1.45503L11.001 6.26082L5.94248 7.63193L2.82601 11.4738Z"
                         fill="currentColor"
                         stroke="currentColor"
-                        stroke-width="0.631858"
+                        shape-rendering="geometricPrecision"
+                        stroke-width="0.6"
                         filter="url(#dropShadow)"></path>
                 </svg>
             </div>
