@@ -1,4 +1,4 @@
-type CharacterCard = {
+export type CharacterData = {
     title: string;
     order: number;
     category: string;
@@ -17,7 +17,7 @@ type CharacterCard = {
     }[];
 };
 
-export const CharacterCardsData: CharacterCard[] = [
+export const characterData: CharacterData[] = [
     {
         title: "LE MAITRE DE LA FLUIDITÉ",
         order: 1,
