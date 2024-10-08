@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "preact/hooks";
 import { useSignal } from "@preact/signals";
 import { animationDisplay, animationState, message } from "../signals/Message";
+import { selectedCharacter } from "../signals/CharacterSelection";
 
 export default function Message() {
     const messageRef = useRef<HTMLSpanElement>(null);
@@ -62,6 +63,12 @@ export default function Message() {
         }
     }, [animationDisplay.value]);
 
+    const characterText = {
+        1: "Motion",
+        2: "Design",
+        3: "Code",
+    };
+
     return (
         <>
             {animationDisplay.value && animationState.value === "Countdown" && (
@@ -88,7 +95,7 @@ export default function Message() {
                     onAnimationEnd={handleVsAppearedAnimationEnd}
                     class={`pointer-events-none fixed inset-0 z-50 flex rotate-[-35deg] items-center justify-center`}>
                     <div class="absolute animate-text-move-left whitespace-nowrap text-8xl font-bold text-cod_white opacity-0 [text-shadow:_0_2px_4px_rgb(38_38_37_/_0.8)]">
-                        Design
+                        {characterText[selectedCharacter.value] || ""}
                     </div>
                     <div class="absolute animate-vs-appear whitespace-nowrap text-7xl font-bold text-cod_white opacity-0 [text-shadow:_0_2px_4px_rgb(38_38_37_/_0.8)]">
                         VS
