@@ -77,6 +77,13 @@ export default {
                     "0%": { opacity: "1" },
                     "100%": { opacity: "0" },
                 },
+                "move-random": {
+                    "0%": { transform: "translate(0, 0)", opacity: "1" },
+                    "100%": {
+                        transform: "translate(calc(-1 * var(--random-x)), calc(-1 * var(--random-y)))",
+                        opacity: "0",
+                    },
+                },
             },
             animation: {
                 "text-move-left": "textAnimationLeft 3s ease-in-out 0.25s forwards",
@@ -85,6 +92,7 @@ export default {
                 moveAndShrink: "moveAndShrink 1.5s ease-out forwards",
                 fight: "fightBanner 1s ease-out forwards",
                 "fade-out": "fadeOut 0.6s ease-in-out forwards",
+                "move-random": "move-random 1s ease-out forwards",
             },
         },
     },
