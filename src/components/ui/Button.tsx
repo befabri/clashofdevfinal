@@ -6,7 +6,7 @@ interface Props {
     onClick?: any;
     disabled?: boolean;
     size?: "md" | "lg";
-    style?: "primary";
+    style?: "primary" | "black";
     title?: string;
     className?: string;
     ariaLabel?: string;
@@ -19,6 +19,7 @@ const sizes = {
 
 const styles = {
     primary: "bg-beige text-cod_black hover:bg-beige_dark",
+    black: "bg-cod_black text-cod_white hover:bg-cod_black/90",
 };
 
 export default function Button({

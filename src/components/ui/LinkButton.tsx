@@ -5,7 +5,7 @@ interface Props {
     children: ComponentChildren;
     href: string;
     size?: "md" | "lg";
-    style?: "primary";
+    style?: "primary" | "black";
     className?: string;
 }
 
@@ -16,6 +16,7 @@ const sizes = {
 
 const styles = {
     primary: "bg-beige text-cod_black hover:bg-beige_dark",
+    black: "bg-cod_black text-cod_white hover:bg-cod_black/90",
 };
 
 export default function LinkButton({ href, style = "primary", size = "md", className, children }: Props) {
