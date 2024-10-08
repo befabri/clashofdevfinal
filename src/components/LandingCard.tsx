@@ -6,7 +6,7 @@ import arrowRightSvg from "../icons/arrow_right.svg";
 
 export function LandingCard() {
     return (
-        <article class="relative flex flex-col gap-8 overflow-hidden rounded-[60px] bg-beige px-[86px] py-12 dark:bg-cod_black">
+        <article class="relative flex h-[631px] flex-col gap-8 overflow-hidden rounded-[60px] bg-beige px-[86px] py-12 dark:bg-cod_black">
             <p class="text-[12px] font-semibold leading-5 text-cod_black text-opacity-80 dark:text-cod_white">
                 / RÈGLESDUJEU
             </p>
