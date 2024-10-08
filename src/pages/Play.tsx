@@ -4,8 +4,11 @@ import CharacterSelection from "../scenes/CharacterSelection";
 import Duel from "../scenes/Duel";
 import Loose from "../scenes/Loose";
 import { Scene } from "../types/types";
+import { animationState } from "../signals/Message";
 
 export function Play() {
+    animationState.value = "Cancel";
+
     const [currentScene, setCurrentScene] = useState<Scene>("CharacterSelection");
 
     const handleSceneComplete = (nextScene: Scene) => {

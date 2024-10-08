@@ -14,6 +14,7 @@ export default function Message() {
         await new Promise((resolve) => requestAnimationFrame(resolve));
 
         for (let i = 3; i > 0; i--) {
+            if (animationState.value === "Cancel") return;
             countdownNumber.value = i;
             message.value = i.toString();
             animationKey.value += 1;
@@ -44,6 +45,13 @@ export default function Message() {
             } else if (newValue === "Fight") {
                 message.value = "Fight !";
                 animationDisplay.value = true;
+            } else if (newValue === "Cancel") {
+                animationDisplay.value = false;
+                if (animatedRef.current) {
+                    animatedRef.current.style.animation = "none";
+                    animatedRef.current.offsetHeight;
+                    animatedRef.current.style.animation = "";
+                }
             }
         });
         return () => {

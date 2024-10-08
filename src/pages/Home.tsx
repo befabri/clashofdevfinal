@@ -2,11 +2,12 @@ import { LandingCard } from "../components/LandingCard";
 import lightning from "../icons/lightning.svg";
 import LinkButton from "../components/ui/LinkButton";
 import CollaboratorCursor from "../components/ui/CollaboratorCursor";
-import { message } from "../signals/Message";
+import { animationState, message } from "../signals/Message";
 import baliseShieldSvg from "../icons/balise_shield.svg";
 
 export function Home() {
     message.value = "CLASH TIME!";
+    animationState.value = "Cancel";
 
     return (
         <div class="relative h-full max-w-screen-2xl">
