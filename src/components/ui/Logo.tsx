@@ -3,8 +3,8 @@ export default function Logo() {
         <a
             href="/"
             aria-label="Accueil"
-            class="bg-beige dark:bg-black rounded-[80px] px-[15px] py-[5.5px] flex items-center justify-center rotate-[8deg]">
-            <span class="uppercase text-xs text-cod_black dark:text-cod_white font-bold">LA FINALE</span>
+            class="flex rotate-[8deg] items-center justify-center rounded-[80px] bg-beige px-[15px] py-[5.5px]">
+            <span class="text-xs font-bold uppercase text-cod_black">LA FINALE</span>
         </a>
     );
 }

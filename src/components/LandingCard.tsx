@@ -6,11 +6,9 @@ import arrowRightSvg from "../icons/arrow_right.svg";
 
 export function LandingCard() {
     return (
-        <article class="relative flex flex-col gap-8 overflow-hidden rounded-[60px] bg-beige px-[20px] py-8 dark:bg-cod_black md:px-[43px] lg:px-[86px] h-lg:h-[631px] h-lg:py-12">
-            <p class="text-[12px] font-semibold leading-5 text-cod_black text-opacity-80 dark:text-cod_white">
-                / RÈGLESDUJEU
-            </p>
-            <h1 class="text-justify text-[80px] font-semibold leading-[86px] text-cod_black dark:text-cod_white md:pr-[86px] md:text-[115px] md:leading-[123px]">
+        <article class="relative flex flex-col gap-8 overflow-hidden rounded-[60px] bg-beige px-[20px] py-8 md:px-[43px] lg:px-[86px] h-lg:h-[631px] h-lg:py-12">
+            <p class="text-[12px] font-semibold leading-5 text-cod_black text-opacity-80">/ RÈGLESDUJEU</p>
+            <h1 class="text-justify text-[80px] font-semibold leading-[86px] text-cod_black md:pr-[86px] md:text-[115px] md:leading-[123px]">
                 <span class="xl:mr-[170px]">Règles</span> du Clash
             </h1>
             <p class="pb-2 text-base font-medium text-cod_black text-opacity-60 md:pr-[300px] lg:pr-0">

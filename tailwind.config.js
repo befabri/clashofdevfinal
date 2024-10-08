@@ -150,5 +150,4 @@ export default {
         "stroke-red-600",
     ],
     plugins: [],
-    darkMode: ["class", '[data-theme="dark"]'],
 };

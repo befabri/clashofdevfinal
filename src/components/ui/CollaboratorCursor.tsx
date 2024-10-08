@@ -14,31 +14,31 @@ const roundedSide = {
 };
 
 const cursorStyles = {
-    pink: "text-pink_mid dark:text-pink_light",
-    green: "text-green_mid dark:text-green_light",
-    blue: "text-blue_dark dark:text-blue_light",
-    mustard: "text-mustard_mid dark:text-mustard_light",
-    orange: "text-orange_mid dark:text-orange_light",
-    purple: "text-purple_mid dark:text-purple_light",
+    pink: "text-pink_mid",
+    green: "text-green_mid",
+    blue: "text-blue_dark",
+    mustard: "text-mustard_mid",
+    orange: "text-orange_mid",
+    purple: "text-purple_mid",
 };
 
 const textStyles = {
-    pink: "text-pink_light dark:text-pink_dark",
-    green: "text-green_light dark:text-green_dark",
-    blue: "text-blue_light dark:text-blue_dark",
-    mustard: "text-mustard_light dark:text-mustard_dark",
-    orange: "text-orange_light dark:text-orange_dark",
-    purple: "text-purple_light dark:text-purple_dark",
-    white: "text-cod_white dark:text-cod_black",
+    pink: "text-pink_light",
+    green: "text-green_light",
+    blue: "text-blue_light",
+    mustard: "text-mustard_light",
+    orange: "text-orange_light",
+    purple: "text-purple_light",
+    white: "text-cod_white",
 };
 
 const styles = {
-    pink: "bg-pink_mid border-pink_dark dark:border-pink_mid/60 dark:bg-pink_light",
-    green: "bg-green_mid border-green_dark dark:border-green_mid/60 dark:bg-green_light",
-    blue: "bg-blue_dark border-blue_dark dark:border-blue_mid/60 dark:bg-blue_light",
-    mustard: "bg-mustard_mid border-mustard_dark dark:border-mustard_mid/60 dark:bg-mustard_light",
-    orange: "bg-orange_mid border-orange_dark dark:border-orange_mid/60 dark:bg-orange_light",
-    purple: "bg-purple_mid border-purple_dark dark:border-purple_mid/60 dark:bg-purple_light",
+    pink: "bg-pink_mid border-pink_dark",
+    green: "bg-green_mid border-green_dark",
+    blue: "bg-blue_dark border-blue_dark",
+    mustard: "bg-mustard_mid border-mustard_dark",
+    orange: "bg-orange_mid border-orange_dark",
+    purple: "bg-purple_mid border-purple_dark",
 };
 
 export default function CollaboratorCursor({ title, side, style, isTextColored = false, flip = false }: Props) {

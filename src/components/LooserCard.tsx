@@ -7,11 +7,9 @@ import { selectedCharacter } from "../signals/CharacterSelection";
 
 export function LooserCard() {
     return (
-        <article class="relative flex h-[631px] flex-col gap-8 overflow-hidden rounded-[60px] bg-beige px-[86px] py-12 dark:bg-cod_black">
-            <p class="text-[12px] font-semibold leading-5 text-cod_black text-opacity-80 dark:text-cod_white">
-                / GRANDGAGNANT
-            </p>
-            <h1 class="pr-[86px] text-justify text-[115px] font-semibold leading-[123px] text-cod_black dark:text-cod_white">
+        <article class="relative flex h-[631px] flex-col gap-8 overflow-hidden rounded-[60px] bg-beige px-[86px] py-12">
+            <p class="text-[12px] font-semibold leading-5 text-cod_black text-opacity-80">/ GRANDGAGNANT</p>
+            <h1 class="pr-[86px] text-justify text-[115px] font-semibold leading-[123px] text-cod_black">
                 You are the loser!
             </h1>
             <p class="pb-2 text-base font-medium text-cod_black text-opacity-60">( La honte )</p>

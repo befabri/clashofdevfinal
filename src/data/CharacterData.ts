@@ -27,7 +27,7 @@ export const characterData: CharacterData[] = [
             src: "motionImage",
             alt: "Le maitre de la fluidité",
         },
-        bgColor: "bg-green_light dark:bg-green_dark",
+        bgColor: "bg-green_light",
         icon: "asteriskLarge",
         cursors: [
             {
