@@ -11,6 +11,7 @@ export default {
                 md: "880px",
                 lg: "1090px",
                 custom: "1920px",
+                key: "1386px",
                 "2xl": "1440px",
                 "h-sm": { raw: "(min-height: 640px)" },
                 "h-md": { raw: "(min-height: 768px)" },
