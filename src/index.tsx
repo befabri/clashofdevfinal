@@ -1,7 +1,6 @@
 import { render } from "preact";
 import { LocationProvider, Router, Route } from "preact-iso";
 import { Header } from "./components/layout/Header";
-import { NotFound } from "./pages/_404.jsx";
 import { Play } from "./pages/Play.js";
 import { Home } from "./pages/Home.js";
 import "./style.css";
@@ -15,7 +14,7 @@ export function App() {
                 <Router>
                     <Route path="/" component={Home} />
                     <Route path="/play" component={Play} />
-                    <Route default component={NotFound} />
+                    <Route default component={Home} />
                 </Router>
             </main>
         </LocationProvider>
